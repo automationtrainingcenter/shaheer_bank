@@ -61,7 +61,7 @@ public class TestExecution extends BrowserHelper {
         employeeCreationPageObj.fillEmpName("Anupriya");
         employeeCreationPageObj.fillLoginPass("aaravi");
         employeeCreationPageObj.selectRole("clerk");
-        employeeCreationPageObj.selectBranch("Primusbank");
+        employeeCreationPageObj.selectBranch("Golkonda");
         Alert alert = employeeCreationPageObj.clickSubmit();
         System.out.println(alert.getText());
         alert.accept();
