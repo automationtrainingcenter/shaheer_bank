@@ -100,7 +100,7 @@ public class TestExecution extends BrowserHelper {
         employeeCreationPageObj.fillEmpName("Anupriya");
         employeeCreationPageObj.fillLoginPass("aaravi");
         employeeCreationPageObj.selectRole("clerk");
-        employeeCreationPageObj.selectBranch("Primusbank");
+        employeeCreationPageObj.selectBranch("Golkonda");
         employeeCreationPageObj.clickReset();
 
     }
