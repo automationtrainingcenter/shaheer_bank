@@ -7,12 +7,12 @@ import org.testng.annotations.BeforeClass;
 
 public class BasicExecution extends TestExecution {
 
-    @BeforeClass(groups = {"valid", "branch", "role", "employee", "reset", "cancel", "create"})
+    @BeforeClass(groups = {"dd", "valid", "branch", "role", "employee", "reset", "cancel", "create"})
     public void launchBrowser() {
         openBrowser("chrome", "http://primusbank.qedgetech.com/");
     }
 
-    @AfterClass(groups = {"valid", "branch", "role", "employee", "reset", "cancel", "create"})
+    @AfterClass(groups = {"dd", "valid", "branch", "role", "employee", "reset", "cancel", "create"})
     public void tearDown() {
         closeBrowser();
     }

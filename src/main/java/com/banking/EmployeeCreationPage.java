@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import utilities.JavascriptHelper;
 
 public class EmployeeCreationPage {
 	private WebDriver driver;
@@ -89,6 +90,10 @@ public class EmployeeCreationPage {
 	public EmpoloyeeDetailsPage clickCancel() {
 		wait.until(ExpectedConditions.elementToBeClickable(this.cancel)).click();
 		return PageFactory.initElements(driver, EmpoloyeeDetailsPage.class);
+	}
+
+	public boolean isFormReset(){
+		return JavascriptHelper.getEditBoxText(driver, this.empName).isEmpty();
 	}
 
 }

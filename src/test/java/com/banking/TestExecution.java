@@ -4,13 +4,15 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilities.BrowserHelper;
+import utilities.ExcelHelper;
 
 public class TestExecution extends BrowserHelper {
 
 
-    @Test(priority = 0, groups = {"valid", "branch","role", "employee", "reset", "cancel", "create"})
+    @Test(priority = 0, groups = {"dd","valid", "branch","role", "employee", "reset", "cancel", "create"})
     public void login() {
         BankHomePage bankHomePageObj = new BankHomePage(driver);
         bankHomePageObj.fillUserName("Admin");
@@ -31,7 +33,7 @@ public class TestExecution extends BrowserHelper {
 
     }
 
-    @Test(priority = 25, groups = {"valid", "branch","role", "employee", "reset", "cancel", "create"})
+    @Test(priority = 25, groups = {"dd","valid", "branch","role", "employee", "reset", "cancel", "create"})
     public void logout() {
         AdminHomePage adminHomePageObj = PageFactory.initElements(driver, AdminHomePage.class);
         adminHomePageObj.clickLogout();
@@ -135,6 +137,34 @@ public class TestExecution extends BrowserHelper {
     }
 
 
+    /*
+     employee creation with multiple sets of data without using @DataProvider
+     but by using ExcelHelper class
+      */
+    @Test(priority = 10, groups = {"employee", "dd"})
+    public void employeeCreationResetWithDDwihoutUsingDP(){
+        AdminHomePage adminHomePage = PageFactory.initElements(driver, AdminHomePage.class);
+        EmpoloyeeDetailsPage empoloyeeDetailsPage = adminHomePage.clickEmployee();
+        EmployeeCreationPage employeeCreationPage = empoloyeeDetailsPage.clickNewEmpoloyee();
+        // create an object of ExcelHelper
+        ExcelHelper excel = new ExcelHelper();
+        excel.openExcel("resources", "testdata.xls", "empData");
+        int nor = excel.rowCount();
+        int noc = excel.columnCount();
+        for(int r = 1; r < nor; r++){
+            String empName = excel.readData(r, 0);
+            String loginPass = excel.readData(r, 1);
+            String role = excel.readData(r, 2);
+            String branch = excel.readData(r, 3);
+            employeeCreationPage.fillEmpName(empName);
+            employeeCreationPage.fillLoginPass(loginPass);
+            employeeCreationPage.selectRole(role);
+            employeeCreationPage.selectBranch(branch);
+            employeeCreationPage = employeeCreationPage.clickReset();
+            Assert.assertTrue(employeeCreationPage.isFormReset());
+        }
 
+
+    }
 
 }
