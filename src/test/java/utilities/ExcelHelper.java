@@ -47,9 +47,9 @@ public class ExcelHelper {
         int nor = rowCount();
         int noc = columnCount();
         String[][] data = new String[nor - 1][noc];
-        for (int r = 0; r < nor; r++) {
+        for (int r = 1; r < nor; r++) {
             for(int c = 0; c < noc; c++){
-                data[r][c] = readData(r+1, c);
+                data[r-1][c] = readData(r, c);
             }
         }
         return data;

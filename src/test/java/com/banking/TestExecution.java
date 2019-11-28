@@ -163,8 +163,32 @@ public class TestExecution extends BrowserHelper {
             employeeCreationPage = employeeCreationPage.clickReset();
             Assert.assertTrue(employeeCreationPage.isFormReset());
         }
+    }
 
+    // role creation with multiple data using data provider
+    @Test(priority = 11, groups = {"role" , "dd"}, dataProviderClass = DataProvideUtility.class, dataProvider = "roleData")
+    public void roleCreationResetWithDP(String roleName, String roleType){
+        AdminHomePage adminHomePageObj = PageFactory.initElements(driver, AdminHomePage.class);
+        RoleDetailsPage roleDetailsPageObj = adminHomePageObj.clickRoles();
+        RoleCreationPage roleCreationPageObj = roleDetailsPageObj.clickNewRole();
+        roleCreationPageObj.fillRoleName(roleName);
+        roleCreationPageObj.selectRoleType(roleType);
+        roleCreationPageObj.clickReset();
+    }
 
+    // branch creation reset with multiple data using data provider
+    @Test(priority = 12, groups = {"branch", "dd"}, dataProviderClass = DataProvideUtility.class, dataProvider = "branchData")
+    public void branchCreationResetWithDP(String branchName, String add, String zip, String country, String state, String city){
+        AdminHomePage adminHomePageObj = PageFactory.initElements(driver, AdminHomePage.class);
+        BranchDetailsPage branchDetailsPageObj = adminHomePageObj.clickBranches();
+        BranchCreationPage branchCreationPageObj = branchDetailsPageObj.clickNewBranch();
+        branchCreationPageObj.fillBranchName(branchName);
+        branchCreationPageObj.fillAddress1(add);
+        branchCreationPageObj.fillZipCode(zip);
+        branchCreationPageObj.selectCountry(country);
+        branchCreationPageObj.selectState(state);
+        branchCreationPageObj.selectCity(city);
+        branchCreationPageObj.clickReset();
     }
 
 }
