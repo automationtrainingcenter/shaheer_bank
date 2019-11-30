@@ -5,10 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utilities.BrowserHelper;
 import utilities.ExcelHelper;
+import utilities.TestNGListeners;
 
+@Listeners(TestNGListeners.class)
 public class TestExecution extends BrowserHelper {
 
 

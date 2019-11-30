@@ -2,14 +2,21 @@ package utilities;
 
 import java.io.File;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class BrowserHelper {
 	 protected WebDriver driver;
+	static ExtentHtmlReporter reporter;
+	static ExtentReports reports;
+	static ExtentTest testTag, test;
 
 	/*
 	 * this method accepts folder name which is a folder in your project root folder and 
@@ -41,6 +48,12 @@ public class BrowserHelper {
 		} else {
 			throw new RuntimeException("browser name must be either chrome or firefox");
 		}
+		// create an object of MyListener class
+		MyListener listener = new MyListener();
+		EventFiringWebDriver edriver = new EventFiringWebDriver(driver);
+		edriver.register(listener);
+		driver = edriver;
+
 		driver.get(url);
 		driver.manage().window().maximize();
 	}
