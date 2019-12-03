@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="grid suite" parallel="tests" thread-count="5">
+    <parameter name="url" value="http://primusbank.qedgetech.com/"/>
+    <test name="surya test">
+        <parameter name="browser" value="firefox"></parameter>
+        <parameter name="os" value="linux"></parameter>
+        <parameter name="nodeURL" value=""></parameter>
+        <groups>
+            <run>
+                <include name="reset"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.banking.ParameterExecution">
+            </class>
+        </classes>
+    </test>
+
+    <test name="chandana test">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="os" value="windows"></parameter>
+        <parameter name="nodeURL" value=""></parameter>
+        <groups>
+            <run>
+                <include name="reset"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.banking.ParameterExecution"></class>
+        </classes>
+    </test>
+
+    <test name="rajesh test">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="os" value="windows"></parameter>
+        <parameter name="nodeURL" value=""></parameter>
+        <groups>
+            <run>
+                <include name="reset"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.banking.ParameterExecution"></class>
+        </classes>
+    </test>
+    <test name="anupriya test">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="os" value="windows"></parameter>
+        <parameter name="nodeURL" value=""></parameter>
+        <groups>
+            <run>
+                <include name="reset"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.banking.ParameterExecution"></class>
+        </classes>
+    </test>
+    <test name="apple test">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="os" value="windows"></parameter>
+        <parameter name="nodeURL" value=""></parameter>
+        <groups>
+            <run>
+                <include name="reset"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.banking.ParameterExecution"></class>
+        </classes>
+    </test>
+</suite>
